@@ -28,6 +28,22 @@ public class CustomerFactory {
 	 * @throws CustomerException if the customerCode is not one of the three valid codes listed in Section 5.3 of the Assignment Specification. 
 	 */
 	public static Customer getCustomer(String customerCode, String name, String mobileNumber, int locationX,  int locationY) throws CustomerException{
-		// TO DO
+		Customer newCustomer;
+		
+		switch(customerCode) {
+			case "PUC":
+				newCustomer = new PickUpCustomer(name, mobileNumber, locationX, locationY);
+				break;
+			case "DNC":
+				newCustomer = new DroneDeliveryCustomer(name, mobileNumber, locationX, locationY);
+				break;
+			case "DVC":
+				newCustomer = new DriverDeliveryCustomer(name, mobileNumber, locationX, locationY);
+				break;
+			default:
+				throw new CustomerException("Invalid customer code.");
+		}
+		
+		return newCustomer;
 	}
 }

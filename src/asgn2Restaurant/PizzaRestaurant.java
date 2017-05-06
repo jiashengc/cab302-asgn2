@@ -3,6 +3,7 @@ package asgn2Restaurant;
 import java.util.ArrayList;
 
 import asgn2Customers.Customer;
+import asgn2Exceptions.CustomerException;
 import asgn2Pizzas.Pizza;
 
 /**
@@ -32,7 +33,8 @@ public class PizzaRestaurant {
 	 * 
 	 */
 	public PizzaRestaurant() {
-		// TO DO
+		customers = new ArrayList<Customer>();
+		pizzas = new ArrayList<Pizza>();
 	}
 
 	/**
@@ -40,11 +42,11 @@ public class PizzaRestaurant {
 	 * The other classes that the method interacts with are listed in Section 11 of the specification document. 
      *
      * <P> PRE: TRUE
-     * <P>POST: If no exception is thrown then the customers and pizzas fields are populated with the details in the log file ordered as they appear in teh log file.
+     * <P>POST: If no exception is thrown then the customers and pizzas fields are populated with the details in the log file ordered as they appear in the log file.
      * <P>      If an exception is thrown then the customers and pizzas fields should be empty.
      * 
 	 * @param filename The log's filename
-	 * @return true if the file was process correctly otherwise false
+	 * @return true if the file was processed correctly 
 	 * @throws CustomerException If the log file contains semantic errors leading that violate the customer constraints listed in Section 5.3 of the Assignment Specification or contain an invalid customer code (passed by another class).
 	 * @throws PizzaException If the log file contains semantic errors leading that violate the pizza constraints listed in Section 5.3 of the Assignment Specification or contain an invalid pizza code (passed by another class).
 	 * @throws LogHandlerException If there was a problem with the log file not related to the semantic errors above (passed by another class).
@@ -61,7 +63,17 @@ public class PizzaRestaurant {
 	 * @throws CustomerException if index is invalid.
 	 */
 	public Customer getCustomerByIndex(int index) throws CustomerException{
-		// TO DO
+		Customer customerToGet;
+		
+		// Checks if the customer index is legit
+		try {
+			customerToGet = customers.get(index);
+		} catch(java.lang.IndexOutOfBoundsException e) {
+			e.printStackTrace();
+			throw new CustomerException("Customer index out of bound");
+		}
+		
+		return customerToGet;
 	}
 	
 	/**
@@ -91,7 +103,7 @@ public class PizzaRestaurant {
 	 * @return the number of objects contained in the customers field.
 	 */
 	public int getNumCustomerOrders(){
-		// TO DO
+		return customers.size();
 	}
 
 			
@@ -102,7 +114,11 @@ public class PizzaRestaurant {
 	 * @return the total delivery distance for all Customers objects in the customers field.
 	 */
 	public double getTotalDeliveryDistance(){
-		// TO DO
+		double totalDistance = 0;
+		for (int i = 0; i < customers.size(); i+=1) {
+			totalDistance += customers.get(i).getDeliveryDistance();
+		}
+		return totalDistance;
 	}
 
 	/**
@@ -121,7 +137,8 @@ public class PizzaRestaurant {
 	 * <P> POST:  The pizzas and customers fields are set to their initial empty states
 	 */
 	public void resetDetails(){
-		// TO DO
+		customers = new ArrayList<Customer>();
+		pizzas = new ArrayList<Pizza>();
 	}
 
 }

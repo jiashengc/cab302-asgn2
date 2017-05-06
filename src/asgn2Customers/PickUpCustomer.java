@@ -27,7 +27,11 @@ public class PickUpCustomer extends Customer {
 	 * 
 	 */
 	public PickUpCustomer(String name, String mobileNumber, int locationX,  int locationY) throws CustomerException {
-		// TO DO	
+		super(name, mobileNumber, locationX, locationY, "Pick Up");
+		
+		if (locationX != 0 || locationY != 0) {
+			throw new CustomerException("The locations given must be 0!");
+		}
 	}
 
 	/**
@@ -37,7 +41,7 @@ public class PickUpCustomer extends Customer {
 	 */
 	@Override
 	public double getDeliveryDistance() {
-		// TO DO
+		return 0;
 	}
 
 }

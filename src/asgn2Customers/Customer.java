@@ -12,7 +12,12 @@ import asgn2Exceptions.CustomerException;
 */
 public abstract class Customer {
 
-
+	private String name;
+	private String mobileNumber;
+	private int locationX;
+	private int locationY;
+	private String type;
+	
 	/**
 	 *  This class represents a customer of the Pizza Palace restaurant.  A detailed description of the class's fields
 	 *  and parameters is provided in the Assignment Specification, in particular in Section 5.2. 
@@ -31,7 +36,38 @@ public abstract class Customer {
 	 * 
 	 */
 	public Customer(String name, String mobileNumber, int locationX, int locationY, String type) throws CustomerException{
-		// TO DO
+		
+		this.name = name;
+		this.mobileNumber = mobileNumber;
+		this.locationX = locationX;
+		this.locationY = locationY;
+		this.type = type;
+		
+		// Check if name meets the requirement
+		// Between 1 - 20 characters and is not just whitespace
+		String tempName = name.replaceAll("\\s", "");
+		boolean isJustWhitespace = tempName.equals(""); 
+		boolean isTooShort = (name.length() < 1);
+		boolean isTooLong = (name.length() > 20);
+		if (isJustWhitespace || isTooShort || isTooLong) {
+			throw new CustomerException("The customer's name does not meet the requirement.");
+		}
+		
+		// Check if mobileNumber meets the requirement
+		// Must be exactly 10 digits and start with 0
+		boolean startsWithZero = mobileNumber.charAt(0) == '0';
+		boolean isTenDigits = mobileNumber.length() == 10;
+		if (!startsWithZero || !isTenDigits) {
+			throw new CustomerException("The customer's mobile number does not meet the requirement.");
+		}
+		
+		// Check if the location is 10 blocks away in terms of X and Y
+		boolean isXTooFar = (locationX < -10) || (locationX > 10);
+		boolean isYTooFar = (locationY < -10) || (locationY > 10);
+		if (isXTooFar || isYTooFar) {
+			throw new CustomerException("Location does is too far away from the restaurant");
+		}
+		
 	}
 	
 	/**
@@ -39,7 +75,7 @@ public abstract class Customer {
 	 * @return The Customer's name.
 	 */
 	public final String getName(){
-		// TO DO
+		return name;
 	}
 	
 	/**
@@ -47,7 +83,7 @@ public abstract class Customer {
 	 * @return The Customer's mobile number.
 	 */
 	public final String getMobileNumber(){
-		// TO DO
+		return mobileNumber;
 	}
 
 	/**
@@ -56,7 +92,7 @@ public abstract class Customer {
 	 * @return A human understandable description of the Customer's type.
 	 */
 	public final String getCustomerType(){
-		// TO DO
+		return type;
 	}
 	
 	/**
@@ -65,7 +101,7 @@ public abstract class Customer {
 	 * @return The Customer's X location
 	 */
 	public final int getLocationX(){
-		// TO DO
+		return locationX;
 	}
 
 	/**
@@ -74,7 +110,7 @@ public abstract class Customer {
 	 * @return The Customer's Y location
 	 */
 	public final int getLocationY(){
-		// TO DO
+		return locationY;
 	}
 
 	/**
