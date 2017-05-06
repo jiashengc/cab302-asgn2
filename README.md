@@ -1,11 +1,8 @@
-# CAB302 Assignment 2
-## Breakdown of Work
-
-String personA = "Jay";
-String personB = "Jia";
+# CAB302 Assignment 2 - Breakdown of Work
+person A = "Jay", person B = "Jia";
 
 ## Individual Model Classes  
-#### Jay
+### Jay
 ---
 In package: asgn2Pizzas:
 - Pizza
@@ -21,7 +18,7 @@ In package: asgn2Restaurant:
 - PizzaRestaurant.getNumPizzaOrders()
 - PizzaRestaurant.getTotalProfit()
 
-#### Jia
+### Jia
 ---
 In package: asgn2Customers:
 - Customer ✔
@@ -39,7 +36,7 @@ In package: asgn2Restaurant
 
 
 ## Individual Test Classes
-#### Jay
+### Jay
 ---
 In package: asgn2Tests:
 - CustomerFactoryTests
@@ -47,7 +44,7 @@ In package: asgn2Tests:
 - LogHandlerCustomerTests
 - RestaurantCustomerTests
 
-#### Jia
+### Jia
 ---
 In package: asgn2Tests
 - LogHandlerPizzaTests 
