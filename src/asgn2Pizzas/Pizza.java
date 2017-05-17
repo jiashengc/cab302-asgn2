@@ -127,7 +127,7 @@ public abstract class Pizza  {
 	 * @return The amount that an individual pizza costs to make.
 	 */
 	public final double getCostPerPizza(){
-		// TO DO
+		calculateCostPerPizza();
 		return costPerPizza;
 	}
 
@@ -179,7 +179,38 @@ public abstract class Pizza  {
 	 * @return Returns  true if the instance of Pizza contains the specified topping and false otherwise.
 	 */
 	public final boolean containsTopping(PizzaTopping topping){
-		// TO DO
+		boolean cheese = topping.equals(PizzaTopping.CHEESE);
+		boolean tomato = topping.equals(PizzaTopping.TOMATO);
+		boolean bacon  = topping.equals(PizzaTopping.BACON);
+		boolean salami = topping.equals(PizzaTopping.SALAMI);
+		boolean pepperoni = topping.equals(PizzaTopping.PEPPERONI);
+		boolean capsicum = topping.equals(PizzaTopping.CAPSICUM);
+		boolean mushroom = topping.equals(PizzaTopping.MUSHROOM);
+		boolean eggplant = topping.equals(PizzaTopping.EGGPLANT);
+		
+		switch(getPizzaType()) {
+			case "Margherita":
+				if (tomato || cheese) {
+					return true;
+				} else {
+					return false;
+				}
+			case "Vegetarian":
+					if (tomato || cheese || eggplant || mushroom | capsicum) {
+						return true;
+					} else {
+						return false;
+					}
+			case "Meat Lovers":
+					if (tomato || cheese || bacon || pepperoni || salami) {
+						return true;
+					} else {
+						return false;
+					}
+			default: 
+					return false;
+		
+		}
 	}
 	
 	/**
