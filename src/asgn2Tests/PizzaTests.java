@@ -52,6 +52,7 @@ public class PizzaTests {
 		margPizza = new MargheritaPizza(1, time1, time2);
 		meatPizza = new MeatLoversPizza(1, time2, time3);
 		vegaPizza = new VegetarianPizza(1, time3, time4);	
+			
 	}
 	
 	/*
@@ -70,7 +71,7 @@ public class PizzaTests {
 		}
 	}
 	
-	@Test (expected=PizzaException.class)
+	@Test(expected=PizzaException.class)
 	public void pizzaZeroQuantity() throws PizzaException {
 		try {
 			margPizza = new MargheritaPizza(0, time1, time2);
@@ -201,6 +202,10 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaGetOrderCost() throws PizzaException {
+		margPizza.calculateCostPerPizza();
+		vegaPizza.calculateCostPerPizza();
+		meatPizza.calculateCostPerPizza();
+		
 		assertEquals(1.5, margPizza.getCostPerPizza(), percision);
 		assertEquals(5.5, vegaPizza.getCostPerPizza(), percision);
 		assertEquals(5, meatPizza.getCostPerPizza(), percision);
@@ -216,6 +221,11 @@ public class PizzaTests {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
+		
+		margPizza.calculateCostPerPizza();
+		vegaPizza.calculateCostPerPizza();
+		meatPizza.calculateCostPerPizza();
+	
 		assertEquals(3.0, margPizza.getOrderCost(), percision);
 		assertEquals(11.0, vegaPizza.getOrderCost(), percision);
 		assertEquals(10, meatPizza.getOrderCost(), percision);
@@ -231,9 +241,14 @@ public class PizzaTests {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
-		assertEquals(150, margPizza.getOrderCost(), percision);
-		assertEquals(550, vegaPizza.getOrderCost(), percision);
-		assertEquals(500, meatPizza.getOrderCost(), percision);
+		
+		margPizza.calculateCostPerPizza();
+		vegaPizza.calculateCostPerPizza();
+		meatPizza.calculateCostPerPizza();
+		
+		assertEquals(15, margPizza.getOrderCost(), percision);
+		assertEquals(55, vegaPizza.getOrderCost(), percision);
+		assertEquals(50, meatPizza.getOrderCost(), percision);
 	}
 	
 	/*
@@ -257,6 +272,7 @@ public class PizzaTests {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
+		
 		assertEquals(16, margPizza.getOrderPrice(), percision);
 		assertEquals(20, vegaPizza.getOrderPrice(), percision);
 		assertEquals(24, meatPizza.getOrderPrice(), percision);

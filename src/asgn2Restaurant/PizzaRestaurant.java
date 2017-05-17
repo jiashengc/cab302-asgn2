@@ -9,7 +9,7 @@ import asgn2Exceptions.PizzaException;
 import asgn2Pizzas.Pizza;
 
 /**
- * This class acts as a ‘model’ of a pizza restaurant. It contains an ArrayList of Pizza objects and an ArrayList of  Customer objects.
+ * This class acts as a  of a pizza restaurant. It contains an ArrayList of Pizza objects and an ArrayList of  Customer objects.
  *  It contains a method that can populate the ArrayLists,  several methods to retrieve information about the ArrayLists and 
  *  a method to reset the array list. Information about the x and y location of the restaurant and the time that first and last 
  *  orders are accepted are listed in Section 5 of the Assignment Specification. 
@@ -96,6 +96,18 @@ public class PizzaRestaurant {
 	 */	
 	public Pizza getPizzaByIndex(int index) throws PizzaException{
 		// TO DO
+		Pizza pizzaToGet;
+		
+		try {
+			pizzaToGet = pizzas.get(index);
+		} catch(java.lang.IndexOutOfBoundsException e) {
+			e.printStackTrace();
+			throw new PizzaException("Customer index out of bound");
+		}
+		
+		return pizzaToGet;
+		
+		
 	}
 	
 	/**
@@ -106,6 +118,7 @@ public class PizzaRestaurant {
 	 */
 	public int getNumPizzaOrders(){
 		// TO DO
+		return pizzas.size();
 	}
 
 	/**
@@ -140,6 +153,11 @@ public class PizzaRestaurant {
 	 */	
 	public double getTotalProfit(){
 		// TO DO
+		double totalProfit = 0;
+		for (int i = 0; i < pizzas.size(); i+=1) {
+			totalProfit += pizzas.get(i).getOrderProfit();
+		}
+		return totalProfit;
 	}
 	
 	/**

@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import asgn2Customers.Customer;
 import asgn2Customers.CustomerFactory;
@@ -12,6 +14,7 @@ import asgn2Exceptions.CustomerException;
 import asgn2Exceptions.LogHandlerException;
 import asgn2Exceptions.PizzaException;
 import asgn2Pizzas.Pizza;
+import asgn2Pizzas.PizzaFactory;
 
 /**
  *
@@ -68,6 +71,25 @@ public class LogHandler {
 	 */
 	public static ArrayList<Pizza> populatePizzaDataset(String filename) throws PizzaException, LogHandlerException{
 		// TO DO
+		ArrayList<Pizza> pizzas = new ArrayList<Pizza>();
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			String line = br.readLine();
+			
+			// For each new lines, read from the file, create a new pizza
+			// and put it into the array list
+			while (line != null) {
+				Pizza pizza = createPizza(line);
+				pizzas.add(pizza);
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new LogHandlerException("File cannot be read.");
+		}
+		
+		return pizzas;
 	}		
 
 	
@@ -123,7 +145,37 @@ public class LogHandler {
 	 * @throws LogHandlerException - If there was a problem parsing the line from the log file.
 	 */
 	public static Pizza createPizza(String line) throws PizzaException, LogHandlerException{
-		// TO DO		
+		// TO DO
+		// Split the line into different sections
+		String[] currentInformation = line.split(COMMA);
+				
+		// Setup fields
+		LocalTime orderTime;
+		LocalTime deliveryTime;
+	    String pizzaCode;
+		int quantity;
+				
+		// Set the variables through the currentCustomer array
+		try {
+			orderTime = LocalTime.parse(currentInformation[0]);
+			deliveryTime = LocalTime.parse(currentInformation[1]); 
+			pizzaCode = currentInformation[7];
+			quantity = Integer.parseInt(currentInformation[8]);
+			
+		} catch(Exception e) {
+				e.printStackTrace();
+				throw new LogHandlerException("Setting pizza fields failed.");
+		}
+				
+		// Create a pizza through the pizza factory
+		Pizza newPizza;
+		try {
+			newPizza = PizzaFactory.getPizza(pizzaCode, quantity, orderTime, deliveryTime);
+		} catch(PizzaException e) {
+			throw e;
+		}
+				
+		return newPizza;
 	}
 
 }

@@ -2,6 +2,11 @@ package asgn2Pizzas;
 
 import java.time.LocalTime;
 
+import asgn2Customers.Customer;
+import asgn2Customers.DriverDeliveryCustomer;
+import asgn2Customers.DroneDeliveryCustomer;
+import asgn2Customers.PickUpCustomer;
+import asgn2Exceptions.CustomerException;
 import asgn2Exceptions.PizzaException;
 
 /**
@@ -30,6 +35,26 @@ public class PizzaFactory {
 	 * */
 	public static Pizza getPizza(String pizzaCode, int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException{
 		// TO DO
+		Pizza newPizza;
+		
+		switch(pizzaCode) {
+			case "PZM":
+				newPizza = new MargheritaPizza(quantity, orderTime, deliveryTime);
+				break;
+			case "PZV":
+				newPizza = new VegetarianPizza(quantity, orderTime, deliveryTime);
+				break;
+			case "PZL":
+				newPizza = new MeatLoversPizza(quantity, orderTime, deliveryTime);
+				break;
+			default:
+				throw new  PizzaException("Invalid pizza code.");
+		}
+		
+		return newPizza;
 	}
-
 }
+
+	
+
+

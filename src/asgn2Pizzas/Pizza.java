@@ -2,6 +2,8 @@ package asgn2Pizzas;
 
 import java.time.LocalTime;
 
+import asgn2Exceptions.PizzaException;
+
 
 /**
  * An abstract class that represents pizzas sold at the Pizza Palace restaurant. 
@@ -31,8 +33,71 @@ public abstract class Pizza  {
 	 * @throws PizzaException if supplied parameters are invalid 
 	 * 
 	 */
+	private int quantity;
+	private LocalTime orderTime;
+	private LocalTime deliveryTime; 
+	private String type; 
+	private double price;
+	
+	private double orderCost;
+	private double orderPrice;
+	private double costPerPizza;
+	private double orderProfit;
+	
+	private double margheritaToppingsPrice;
+	private double vegetarianToppingsPrice;
+	private double meatLoversToppingsPrice;
+	
+	
+			
 	public Pizza(int quantity, LocalTime orderTime, LocalTime deliveryTime, String type, double price) throws PizzaException{
-		// TO DO	
+		// TO DO
+		this.quantity = quantity;
+		this.orderTime = orderTime;
+		this.deliveryTime = deliveryTime;
+		this.type = type;
+		this.price = price;
+
+		
+		// Check if quantity meets the requirement
+		// Must be from 1 to 10
+		int checkQuantity = quantity;		
+		if( checkQuantity <= 0 || checkQuantity > 10 ) throw new PizzaException("The quantity should be eitehr at least 1 or less than equal to 10 ");
+		
+		// Check if orderTime meets the requirement
+		// Must be between 17 : 00 and 23 : 00
+		LocalTime checkTime1 = orderTime;
+		int hours1 = checkTime1.getHour();
+		if( (hours1 < 19 || hours1 > 23)) throw new PizzaException("Invalid order time.");
+		
+		/*
+		// Check if deliveryTime meets the requirement
+		LocalTime checkTime2 = deliveryTime;
+		int hours2 = checkTime2.getHour();
+		int minute2 = checkTime2.getMinute();
+		int second2 = checkTime2.getSecond();
+		if( (hours2 < 0 || hours2 > 23) || (minute2 < 0 || minute2 > 59) || (second2 < 0 || second2 > 59) ) throw new PizzaException("");
+		*/
+	
+		
+		// Check if type meets the requirement
+		// Must be "Margherita", "Vegetarian", or Meat Lovers"
+		String checkPizzaType = type;
+		boolean margherita = checkPizzaType.equals("Margherita"); 
+		boolean vegetarian = checkPizzaType.equals("Vegetarian"); 
+		boolean meatLovers = checkPizzaType.equals("Meat Lovers"); 
+		if( !margherita && !vegetarian && !meatLovers) throw new PizzaException("Invaild pizza type. It should be one of the pizza types"
+				+ "(Margherita, Vegetarian, or Meat Lovers).");
+		
+		// Check if price meets the requirement
+		double checkPrice = price;
+		int margheritaPrice = 8;
+		int vegetarianPrice = 10;
+		int meatLoversPrice = 12;
+		if( (checkPrice != margheritaPrice) && (checkPrice != vegetarianPrice) && checkPrice != meatLoversPrice) throw new PizzaException("Invalid pizza price. It should be"
+				+ "one of the prices(margherita 8, vegetarian 10, or meatLovers 12)");
+		
+						
 	}
 
 	/**
@@ -43,6 +108,18 @@ public abstract class Pizza  {
 	 */
 	public final void calculateCostPerPizza(){
 		// TO DO
+		if(price == 8){
+			margheritaToppingsPrice = PizzaTopping.TOMATO.getCost() + PizzaTopping.CHEESE.getCost();
+			costPerPizza = margheritaToppingsPrice;
+		}else if(price == 10){
+			vegetarianToppingsPrice = PizzaTopping.TOMATO.getCost() + PizzaTopping.CHEESE.getCost() + PizzaTopping.EGGPLANT.getCost( ) + 
+				PizzaTopping.MUSHROOM.getCost() + PizzaTopping.CAPSICUM.getCost();
+			costPerPizza = vegetarianToppingsPrice;
+		}else if(price == 12){
+			meatLoversToppingsPrice = PizzaTopping.TOMATO.getCost() + PizzaTopping.CHEESE.getCost() + PizzaTopping.BACON.getCost() + PizzaTopping.PEPPERONI.getCost() +
+				PizzaTopping.SALAMI.getCost();
+			costPerPizza = meatLoversToppingsPrice;
+		}
 	}
 	
 	/**
@@ -51,6 +128,7 @@ public abstract class Pizza  {
 	 */
 	public final double getCostPerPizza(){
 		// TO DO
+		return costPerPizza;
 	}
 
 	/**
@@ -59,6 +137,7 @@ public abstract class Pizza  {
 	 */
 	public final double getPricePerPizza(){
 		// TO DO
+		return price;
 	}
 
 	/**
@@ -67,6 +146,8 @@ public abstract class Pizza  {
 	 */
 	public final double getOrderCost(){
 		// TO DO
+		orderCost = costPerPizza * quantity;
+		return orderCost;
 	}
 	
 	/**
@@ -75,6 +156,9 @@ public abstract class Pizza  {
 	 */
 	public final double getOrderPrice(){
 		// TO DO
+		orderPrice = price * quantity;
+		
+		return orderPrice;
 	}
 	
 	
@@ -84,6 +168,8 @@ public abstract class Pizza  {
 	 */
 	public final double getOrderProfit(){
 		// TO DO
+		orderProfit = orderPrice - orderCost;
+		return orderProfit;
 	}
 	
 
@@ -102,6 +188,7 @@ public abstract class Pizza  {
 	 */
 	public final int getQuantity(){
 		// TO DO
+		return quantity;
 	}
 
 	/**
@@ -111,6 +198,7 @@ public abstract class Pizza  {
 	 */
 	public final String getPizzaType(){
 		// TO DO
+		return type;
 	}
 
 
