@@ -69,214 +69,125 @@ public class CustomerTests {
 	
 	@Test
 	public void name() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer("JiSuChoi", mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer("NaRaeChoi", mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer("SeulGiChoi", mobileNumber3, locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer("JiSuChoi", mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer("NaRaeChoi", mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer("SeulGiChoi", mobileNumber3, locationX3, locationY3);
 	}
 	
 	@Test(expected=CustomerException.class)
 	public void emptyName() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer("", mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer("", mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer("", mobileNumber3, locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer("", mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer("", mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer("", mobileNumber3, locationX3, locationY3);
 	}
 	
-	@Test (expected=CustomerException.class)
+	@Test
 	public void shortName() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer("c", mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer("ff", mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer("ccc", mobileNumber3, locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer("c", mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer("ff", mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer("ccc", mobileNumber3, locationX3, locationY3);
 	}
 	
 	
 	@Test(expected=CustomerException.class)
 	public void tooLongName() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer("aaaaaaaaaabbbbbbbbbbc", mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer("bbbbbbbbbbccccccccccd", mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer("ccccccccccdddddddddde", mobileNumber3, locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer("aaaaaaaaaabbbbbbbbbbc", mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer("bbbbbbbbbbccccccccccd", mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer("ccccccccccdddddddddde", mobileNumber3, locationX3, locationY3);
 	}
 	
-	@Test(expected=CustomerException.class)
+	@Test 
 	public void whitespaceWithName() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer("Ju Ch J", mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(" H H", mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer("J J C ", mobileNumber3, locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer("Ju Ch J", mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(" H H", mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer("J J C ", mobileNumber3, locationX3, locationY3);
 	}
 	
 	@Test
 	public void mobileDigits() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, "0101234567", locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, "0000111122", locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, "0001112223", locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, "0101234567", locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, "0000111122", locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, "0001112223", locationX3, locationY3);
 	}
 	
 	@Test(expected=CustomerException.class)
 	public void notStartWithZero() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, "1101234567", locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, "2000111122", locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, "3001112223", locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, "1101234567", locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, "2000111122", locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, "3001112223", locationX3, locationY3);
 	}
 	
 	@Test(expected=CustomerException.class)
-	public void overTenDigints() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, "0101234567123", locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, "0000111122123", locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, "0001112223121", locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+	public void overTenDigits() throws CustomerException{
+		driverCustomer = new DriverDeliveryCustomer(name1, "0101234567123", locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, "0000111122123", locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, "0001112223121", locationX3, locationY3);
 	}
 	
 	@Test(expected=CustomerException.class)
-	public void lessTenDigints() throws CustomerException{
-		try{
-			try{
-			driverCustomer = new DriverDeliveryCustomer(name1, "01123", locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, "011123", locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, "0113121", locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}	driverCustomer = new DriverDeliveryCustomer(name1, "01123", locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, "011123", locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, "0113121", locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+	public void lessTenDigits() throws CustomerException{
+		driverCustomer = new DriverDeliveryCustomer(name1, "01123", locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, "011123", locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, "0113121", locationX3, locationY3);
+		driverCustomer = new DriverDeliveryCustomer(name1, "01123", locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, "011123", locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, "0113121", locationX3, locationY3);
 	}
 	
 	@Test 
 	public void normalLocation() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, 5, 5);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, 2, 2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, 0, 0);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, 5, 5);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, 2, 2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, 0, 0);
 	}
 	
 	@Test(expected=CustomerException.class) 
 	public void pickUpCustomerSetsToDifferentLocations() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, 3, 3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, 3, 3);
 	}
 	
 	@Test(expected=CustomerException.class) 
 	public void locationXIsTooFarPositiveNumber() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, 11, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, 11, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3, locationY3);
 	}
 	
 	@Test(expected=CustomerException.class) 
 	public void locationXIsTooFarNegativeNumber() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX2, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, -14, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX2, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, -14, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3, locationY3);
 	}
 	
 	@Test(expected=CustomerException.class) 
 	public void locationYIsTooFarPositiveNumber() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, 14);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3, locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, 14);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3, locationY3);
 	}
 	
 	@Test(expected=CustomerException.class) 
 	public void locationYIsTooFarNegativeNumber() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, -14);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, -14);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
 	}
 	
 	@Test(expected=CustomerException.class) 
 	public void locationXAndYAreTooFar() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, 15, 15);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, -15, -15);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, 15, 15);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, -15, -15);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
 	}
 	
 	@Test
 	public void getCustomerNames() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
 		
 		assertEquals("JiSuChoi", driverCustomer.getName());
 		assertEquals("Rebekah", droneCustomer.getName());
@@ -285,14 +196,9 @@ public class CustomerTests {
 	
 	@Test
 	public void getCustomerMobileNumbers() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
 		
 		assertEquals("0101234567", driverCustomer.getMobileNumber());
 		assertEquals("0102345678", droneCustomer.getMobileNumber());
@@ -301,14 +207,9 @@ public class CustomerTests {
 	
 	@Test
 	public void getCustomerTypes() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
 		
 		assertEquals("Driver Delivery", driverCustomer.getCustomerType());
 		assertEquals("Drone Delivery", droneCustomer.getCustomerType());
@@ -317,14 +218,9 @@ public class CustomerTests {
 	
 	@Test
 	public void getLocationX() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
 		
 		assertEquals(5, driverCustomer.getLocationX());
 		assertEquals(4, droneCustomer.getLocationX());
@@ -333,14 +229,9 @@ public class CustomerTests {
 	
 	@Test
 	public void getLocationY() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
 		
 		assertEquals(6, driverCustomer.getLocationY());
 		assertEquals(3, droneCustomer.getLocationY());
@@ -349,14 +240,9 @@ public class CustomerTests {
 	
 	@Test
 	public void getDeliveryDistance() throws CustomerException{
-		try{
-			driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
-			droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
-			pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
-		}catch(CustomerException e){
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		driverCustomer = new DriverDeliveryCustomer(name1, mobileNumber1, locationX1, locationY1);
+		droneCustomer = new DroneDeliveryCustomer(name2, mobileNumber2, locationX2, locationY2);
+		pickupCustomer = new PickUpCustomer(name3, mobileNumber3, locationX3,locationY3);
 		
 		double driver = driverCustomer.getDeliveryDistance();
 		double drone = droneCustomer.getDeliveryDistance();

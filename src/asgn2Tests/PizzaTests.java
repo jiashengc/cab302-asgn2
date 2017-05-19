@@ -61,38 +61,23 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaNormalQuantity() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(1, time1, time2);
-			meatPizza = new MeatLoversPizza(2, time2, time3);
-			vegaPizza = new VegetarianPizza(5, time3, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(1, time1, time2);
+		meatPizza = new MeatLoversPizza(2, time2, time3);
+		vegaPizza = new VegetarianPizza(5, time3, time4);
 	}
 	
 	@Test(expected=PizzaException.class)
 	public void pizzaZeroQuantity() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(0, time1, time2);
-			meatPizza = new MeatLoversPizza(0, time2, time3);
-			vegaPizza = new VegetarianPizza(0, time3, time4);
-		} catch(PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(0, time1, time2);
+		meatPizza = new MeatLoversPizza(0, time2, time3);
+		vegaPizza = new VegetarianPizza(0, time3, time4);
 	}
 	
 	@Test (expected=PizzaException.class)
 	public void pizzaTooManyQuantity() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(11, time1, time2);
-			meatPizza = new MeatLoversPizza(12, time2, time3);
-			meatPizza = new MeatLoversPizza(50, time3, time4);
-		} catch(PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(11, time1, time2);
+		meatPizza = new MeatLoversPizza(12, time2, time3);
+		meatPizza = new MeatLoversPizza(50, time3, time4);
 	}
 	
 	@Test (expected=PizzaException.class)
