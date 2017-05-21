@@ -43,12 +43,12 @@ public class LogHandler {
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(filename));
-			String line = br.readLine();
+			String line = null;
 			
 			// For every new line, read from the file,
 			// create a new customer
 			// and push it into the array list
-			while (line != null) {
+			while ((line=br.readLine()) != null) {
 				Customer customer = createCustomer(line);
 				customers.add(customer);
 			}
@@ -70,16 +70,16 @@ public class LogHandler {
 	 * 
 	 */
 	public static ArrayList<Pizza> populatePizzaDataset(String filename) throws PizzaException, LogHandlerException{
-		// TO DO
+		
 		ArrayList<Pizza> pizzas = new ArrayList<Pizza>();
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(filename));
-			String line = br.readLine();
+			String line = null;
 			
 			// For each new lines, read from the file, create a new pizza
 			// and put it into the array list
-			while (line != null) {
+			while ((line=br.readLine()) != null) {
 				Pizza pizza = createPizza(line);
 				pizzas.add(pizza);
 			}

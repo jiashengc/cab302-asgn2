@@ -143,6 +143,9 @@ public class PizzaRestaurant {
 		for (int i = 0; i < customers.size(); i+=1) {
 			totalDistance += customers.get(i).getDeliveryDistance();
 		}
+		
+		// Round off to 2 decimal places
+		totalDistance = Math.round(totalDistance * 100.0) / 100.0;
 		return totalDistance;
 	}
 

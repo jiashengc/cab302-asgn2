@@ -43,7 +43,11 @@ public class DroneDeliveryCustomer extends Customer {
 		int x = super.getLocationX();
 		int y = super.getLocationY();
 		
-		double EuclideanDistance = Math.sqrt((x - 0)^2 + (y - 0)^2);
+		double EuclideanDistance = Math.sqrt(Math.abs((x - 0)^2 + (y - 0)^2));
+		
+		// Roundoff
+		EuclideanDistance = Math.round(EuclideanDistance * 100.0) / 100.0;
+		
 		return EuclideanDistance;
 	}
 	

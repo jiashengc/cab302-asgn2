@@ -29,13 +29,14 @@ public class RestaurantPizzaTests {
 	@Before
 	public void setup() throws CustomerException, PizzaException, LogHandlerException {
 		PR = new PizzaRestaurant();
-		PR = new PizzaRestaurant();
+		PR2 = new PizzaRestaurant();
 		PR.processLog("logs/20170101.txt");
 	}
 	
 	@Test
 	public void testNumPizzaOrders() {
-		assertEquals(0, PR.getNumPizzaOrders());
+		System.out.println(PR.getNumPizzaOrders());
+		assertEquals(3, PR.getNumPizzaOrders());
 	}
 	
 	@Test
