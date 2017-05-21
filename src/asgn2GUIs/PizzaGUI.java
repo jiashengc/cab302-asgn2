@@ -14,6 +14,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.DefaultCaret;
 
 import asgn2Customers.Customer;
+import asgn2Exceptions.CustomerException;
+import asgn2Exceptions.LogHandlerException;
+import asgn2Exceptions.PizzaException;
 import asgn2Pizzas.Pizza;
 import asgn2Restaurant.LogHandler;
 import asgn2Restaurant.PizzaRestaurant;
@@ -43,11 +46,12 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	
 	private PizzaRestaurant restaurant;
 	private static final long serialVersionUID = -7031008862559936404L;
-	public static final int WIDTH = 500;
-	public static final int HEIGHT = 400;
+	public static final int WIDTH = 700;
+	public static final int HEIGHT = 500;
 	
 	// Panels
 	private JPanel pnlDisplay;
+	private JPanel pnlDisplayBtn;
 	private JPanel pnlNorth;
 	private JPanel pnlWest;
 	private JPanel pnlEast;
@@ -61,6 +65,27 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	
 	// Displays
 	private JTextArea txtDisplay;
+	
+	// Tables
+	private JTable customersTable;
+	private JTable ordersTable;
+	
+	private String[] customerColumn = {
+			"Name",
+			"Mobile Number",
+			"Type",
+			"X",
+			"Y",
+			"Delivery Distance"
+	};
+	
+	private String[] orderColumn = {
+			"Type",
+			"Quantity",
+			"Price",
+			"Cost",
+			"Profit"
+	};
 	
 	
 	/**
@@ -77,9 +102,12 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
 		// Setting the panels
 		pnlDisplay = createPanel(Color.WHITE);
+		pnlDisplayBtn = createPanel(Color.WHITE);
 		pnlNorth = createPanel(Color.LIGHT_GRAY);
 		pnlEast = createPanel(Color.LIGHT_GRAY);
 		pnlBtn = createPanel(Color.LIGHT_GRAY);
@@ -96,9 +124,14 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		
 		pnlDisplay.setLayout(new BorderLayout());
 		pnlDisplay.add(txtDisplay, BorderLayout.CENTER);
+		pnlDisplay.add(pnlDisplayBtn, BorderLayout.PAGE_END);
 		
 		layoutButtonPanel();
 		
+		reCreateLayout();
+	}
+	
+	public void reCreateLayout() {
 		this.getContentPane().add(pnlDisplay,BorderLayout.CENTER);
 	    this.getContentPane().add(pnlNorth,BorderLayout.NORTH);
 	    this.getContentPane().add(pnlBtn,BorderLayout.SOUTH);
@@ -117,10 +150,31 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
+		JButton button = (JButton) e.getSource();
+		String command = button.getActionCommand();
 		
 		// Check whichever buttons gets pressed
 		if (src == btnLoadFile) {
 			fileChooser();
+		}
+		
+		// Check if it's a file then load that file
+		if (command.substring(command.length() - 4).equals(".txt")) {
+			try {
+				System.out.println("logs/" + command);
+				pizzas = LogHandler.populatePizzaDataset("logs/" + command);
+				customers = LogHandler.populateCustomerDataset("logs/" + command);
+				generateTable();
+			} catch (PizzaException e1) {
+				e1.printStackTrace();
+				System.out.println(e1.getMessage());
+			} catch (CustomerException e1) {
+				e1.printStackTrace();
+				System.out.println(e1.getMessage());
+			} catch (LogHandlerException e1) {
+				e1.printStackTrace();
+				System.out.println(e1.getMessage());
+			}
 		}
 	}
 
@@ -176,23 +230,85 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	}
 	
 	private void fileChooser() {
-		JFileChooser chooser = new JFileChooser();
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
-		chooser.setFileFilter(filter);
+		File folder = new File("logs");
+		File[] listOfFiles = folder.listFiles();
+		txtDisplay.setText("List of available files");
 		
-		int returnValue = chooser.showOpenDialog(null);
-		if (returnValue == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = chooser.getSelectedFile();
-			try {
-				java.awt.Desktop.getDesktop().open(selectedFile);
-			} catch (IOException e) {
-				e.printStackTrace();
-				System.out.println(e.getMessage());
+		// Initialize display constraints
+		GridBagLayout layout = new GridBagLayout();
+	    pnlDisplayBtn.setLayout(layout);
+	    GridBagConstraints constraints = new GridBagConstraints(); 
+		constraints.fill = GridBagConstraints.NONE;
+	    constraints.anchor = GridBagConstraints.CENTER;
+	    constraints.weightx = 250;
+	    constraints.weighty = 250;
+		
+	    pnlDisplayBtn.removeAll();
+	    
+		for (int i = 0; i < listOfFiles.length; i+=1) {
+			if(listOfFiles[i].isFile()) {
+				JButton tempBtn = createButton(listOfFiles[i].getName());
+				addToPanel(pnlDisplayBtn, tempBtn, constraints, 2, i + 10, 5, 2);
+				tempBtn.addActionListener(this);
 			}
 		}
 		
-		// Populate the pizza and customer data
-		//pizzas = LogHandler.populatePizzaDataset(chooser);
+		pnlDisplayBtn.updateUI();
 	}
+	
+	private void generateTable() {
+		String[][] tmpCustomerTable = {};
+		String[][] tmpOrderTable = {};
+		
+		System.out.println("Generating Table");
+		
+		for (int i = 0; i < customers.size(); i+=1) {
+			Customer tmpC = customers.get(i);
+			tmpCustomerTable[i][0] = tmpC.getName();
+			tmpCustomerTable[i][1] = tmpC.getMobileNumber();
+			tmpCustomerTable[i][2] = tmpC.getCustomerType();
+			tmpCustomerTable[i][3] = Integer.toString(tmpC.getLocationX()) + ", " + Integer.toString(tmpC.getLocationY());
+			tmpCustomerTable[i][4] = Double.toString(tmpC.getDeliveryDistance());
+			
+			Pizza tmpP = pizzas.get(i);
+			tmpOrderTable[i][0] = tmpP.getPizzaType();
+			tmpOrderTable[i][1] = Integer.toString(tmpP.getQuantity());
+			tmpOrderTable[i][2] = Double.toString(tmpP.getOrderPrice());
+			tmpOrderTable[i][3] = Double.toString(tmpP.getOrderCost());
+			tmpOrderTable[i][4] = Double.toString(tmpP.getOrderProfit());
+		}
+		
+		System.out.println("Generating complete!");
+		
+		customersTable = new JTable(tmpCustomerTable, customerColumn);
+		ordersTable = new JTable(tmpOrderTable, orderColumn);
+		
+		System.out.println(customersTable);
+		System.out.println(ordersTable);
+		
+		JScrollPane scrollPaneCustomers = new JScrollPane(customersTable);
+		JScrollPane scrollPaneOrders = new JScrollPane(ordersTable);
+		customersTable.setPreferredScrollableViewportSize(customersTable.getPreferredSize());
+		ordersTable.setPreferredScrollableViewportSize(ordersTable.getPreferredSize());
+		add(scrollPaneCustomers);
+		add(scrollPaneOrders);
+		
+		// Initialize display constraints
+		GridBagLayout layout = new GridBagLayout();
+	    pnlDisplayBtn.setLayout(layout);
+	    GridBagConstraints constraints = new GridBagConstraints(); 
+		constraints.fill = GridBagConstraints.NONE;
+	    constraints.anchor = GridBagConstraints.CENTER;
+	    constraints.weightx = 250;
+	    constraints.weighty = 250;
+		
+	    pnlDisplayBtn.removeAll();
+	    
+	    pnlDisplayBtn.add(customersTable.getTableHeader(), BorderLayout.PAGE_START);
+	    pnlDisplayBtn.add(customersTable, BorderLayout.CENTER);
+	    
+	    pnlDisplayBtn.updateUI();
+	}
+	
 	
 }

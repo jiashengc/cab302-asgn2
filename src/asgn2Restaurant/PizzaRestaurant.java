@@ -57,13 +57,15 @@ public class PizzaRestaurant {
 	public boolean processLog(String filename) throws CustomerException, PizzaException, LogHandlerException{
 		try {
 			customers = LogHandler.populateCustomerDataset(filename);
+			pizzas = LogHandler.populatePizzaDataset(filename);
 		} catch(CustomerException e) {
+			throw e;
+		} catch(PizzaException e) {
 			throw e;
 		} catch(LogHandlerException e) {
 			throw e;
 		}
 		
-		pizzas = LogHandler.populatePizzaDataset(filename);
 		
 		return true;
 	}
@@ -95,14 +97,13 @@ public class PizzaRestaurant {
 	 * @throws PizzaException if index is invalid.
 	 */	
 	public Pizza getPizzaByIndex(int index) throws PizzaException{
-		// TO DO
 		Pizza pizzaToGet;
 		
 		try {
 			pizzaToGet = pizzas.get(index);
 		} catch(java.lang.IndexOutOfBoundsException e) {
 			e.printStackTrace();
-			throw new PizzaException("Customer index out of bound");
+			throw new PizzaException("Pizza index out of bound");
 		}
 		
 		return pizzaToGet;
@@ -117,7 +118,6 @@ public class PizzaRestaurant {
 	 * @return the number of objects contained in the pizzas field.
 	 */
 	public int getNumPizzaOrders(){
-		// TO DO
 		return pizzas.size();
 	}
 
@@ -152,7 +152,6 @@ public class PizzaRestaurant {
 	 * @return the total profit for all of the Pizza objects in the pizzas field.
 	 */	
 	public double getTotalProfit(){
-		// TO DO
 		double totalProfit = 0;
 		for (int i = 0; i < pizzas.size(); i+=1) {
 			totalProfit += pizzas.get(i).getOrderProfit();

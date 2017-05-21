@@ -145,7 +145,7 @@ public class LogHandler {
 	 * @throws LogHandlerException - If there was a problem parsing the line from the log file.
 	 */
 	public static Pizza createPizza(String line) throws PizzaException, LogHandlerException{
-		// TO DO
+		
 		// Split the line into different sections
 		String[] currentInformation = line.split(COMMA);
 				
