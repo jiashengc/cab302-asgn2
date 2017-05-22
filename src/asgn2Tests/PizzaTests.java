@@ -82,14 +82,9 @@ public class PizzaTests {
 	
 	@Test (expected=PizzaException.class)
 	public void pizzaNegativeQuantity() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(-1, time1, time2);
-			meatPizza = new MeatLoversPizza(-5, time2, time3);
-			meatPizza = new MeatLoversPizza(-10, time3, time4);
-		} catch(PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(-1, time1, time2);
+		meatPizza = new MeatLoversPizza(-5, time2, time3);
+		meatPizza = new MeatLoversPizza(-10, time3, time4);
 	}
 	
 	/*
@@ -99,66 +94,47 @@ public class PizzaTests {
 	
 	@Test (expected=PizzaException.class)
 	public void pizzaBeforeOrderTime() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(1, beforeTime, time2);
-			meatPizza = new MeatLoversPizza(1, beforeTime, time3);
-			vegaPizza = new VegetarianPizza(1, beforeTime, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(1, beforeTime, time2);
+		meatPizza = new MeatLoversPizza(1, beforeTime, time3);
+		vegaPizza = new VegetarianPizza(1, beforeTime, time4);
 	}
 	
 	@Test (expected=PizzaException.class)
 	public void pizzaAfterOrderTime() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(1, overTime, time2);
-			meatPizza = new MeatLoversPizza(1, overTime, time3);
-			vegaPizza = new VegetarianPizza(1, overTime, time4);
-		} catch(PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(1, overTime, time2);
+		meatPizza = new MeatLoversPizza(1, overTime, time3);
+		vegaPizza = new VegetarianPizza(1, overTime, time4);
+
 	}
 	
 	@Test (expected=PizzaException.class)
 	public void pizzaDeliveryTimeNotOverTenMinutes() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(1, time4, time4b);
-			meatPizza = new MeatLoversPizza(1, time4, time4b);
-			vegaPizza = new VegetarianPizza(1, time4, time4b);
-		} catch(PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(1, time4, time4b);
+		meatPizza = new MeatLoversPizza(1, time4, time4b);
+		vegaPizza = new VegetarianPizza(1, time4, time4b);
 	}
 	
 	@Test (expected=PizzaException.class)
 	public void pizzaDeliveryTimeBeforeOpeningTime() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(1, time2, beforeTime);
-			meatPizza = new MeatLoversPizza(1, time3, beforeTime);
-			vegaPizza = new VegetarianPizza(1, time4, beforeTime);
-		} catch(PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(1, time2, beforeTime);
+		meatPizza = new MeatLoversPizza(1, time3, beforeTime);
+		vegaPizza = new VegetarianPizza(1, time4, beforeTime);
+
 	}
 	
 	@Test (expected=PizzaException.class)
 	public void pizzaDeveliveryTimeBeforeOrderTime() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(1, time2, time1);
-			meatPizza = new MeatLoversPizza(1, time3, time2);
-			vegaPizza = new VegetarianPizza(1, time4, time3);
-		} catch(PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(1, time2, time1);
+		meatPizza = new MeatLoversPizza(1, time3, time2);
+		vegaPizza = new VegetarianPizza(1, time4, time3);
 	}
 	
-	// TODO Should add a test if it's after an hour 
-	
+	@Test (expected=PizzaException.class)
+	public void pizzaDeliveryTimeAfterAnHour() throws PizzaException {
+		margPizza = new MargheritaPizza(1, time1, time4);
+		meatPizza = new MeatLoversPizza(1, time1, time4);
+		vegaPizza = new VegetarianPizza(1, time1, time4);
+	}
 	/*
 	 * This section to check getCostPerPizza method
 	 */
@@ -186,11 +162,7 @@ public class PizzaTests {
 	 */
 	
 	@Test
-	public void pizzaGetOrderCost() throws PizzaException {
-		margPizza.calculateCostPerPizza();
-		vegaPizza.calculateCostPerPizza();
-		meatPizza.calculateCostPerPizza();
-		
+	public void pizzaGetOrderCost() throws PizzaException {		
 		assertEquals(1.5, margPizza.getCostPerPizza(), percision);
 		assertEquals(5.5, vegaPizza.getCostPerPizza(), percision);
 		assertEquals(5, meatPizza.getCostPerPizza(), percision);
@@ -198,18 +170,9 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaGetOrderCostTwo() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(2, time1, time2);
-			meatPizza = new MeatLoversPizza(2, time2, time3);
-			vegaPizza = new VegetarianPizza(2, time3, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
-		
-		margPizza.calculateCostPerPizza();
-		vegaPizza.calculateCostPerPizza();
-		meatPizza.calculateCostPerPizza();
+		margPizza = new MargheritaPizza(2, time1, time2);
+		meatPizza = new MeatLoversPizza(2, time2, time3);
+		vegaPizza = new VegetarianPizza(2, time3, time4);
 	
 		assertEquals(3.0, margPizza.getOrderCost(), percision);
 		assertEquals(11.0, vegaPizza.getOrderCost(), percision);
@@ -218,18 +181,9 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaGetOrderCostMax() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(10, time1, time2);
-			meatPizza = new MeatLoversPizza(10, time2, time3);
-			vegaPizza = new VegetarianPizza(10, time3, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
-		
-		margPizza.calculateCostPerPizza();
-		vegaPizza.calculateCostPerPizza();
-		meatPizza.calculateCostPerPizza();
+		margPizza = new MargheritaPizza(10, time1, time2);
+		meatPizza = new MeatLoversPizza(10, time2, time3);
+		vegaPizza = new VegetarianPizza(10, time3, time4);
 		
 		assertEquals(15, margPizza.getOrderCost(), percision);
 		assertEquals(55, vegaPizza.getOrderCost(), percision);
@@ -249,14 +203,9 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaGetOrderPriceTwo() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(2, time1, time2);
-			meatPizza = new MeatLoversPizza(2, time2, time3);
-			vegaPizza = new VegetarianPizza(2, time3, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(2, time1, time2);
+		meatPizza = new MeatLoversPizza(2, time2, time3);
+		vegaPizza = new VegetarianPizza(2, time3, time4);
 		
 		assertEquals(16, margPizza.getOrderPrice(), percision);
 		assertEquals(20, vegaPizza.getOrderPrice(), percision);
@@ -265,14 +214,10 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaGetOrderPriceMax() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(10, time1, time2);
-			meatPizza = new MeatLoversPizza(10, time2, time3);
-			vegaPizza = new VegetarianPizza(10, time3, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(10, time1, time2);
+		meatPizza = new MeatLoversPizza(10, time2, time3);
+		vegaPizza = new VegetarianPizza(10, time3, time4);
+
 		assertEquals(80, margPizza.getOrderPrice(), percision);
 		assertEquals(100, vegaPizza.getOrderPrice(), percision);
 		assertEquals(120, meatPizza.getOrderPrice(), percision);
@@ -291,14 +236,10 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaGetOrderProfitTwo() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(2, time1, time2);
-			meatPizza = new MeatLoversPizza(2, time2, time3);
-			vegaPizza = new VegetarianPizza(2, time3, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(2, time1, time2);
+		meatPizza = new MeatLoversPizza(2, time2, time3);
+		vegaPizza = new VegetarianPizza(2, time3, time4);
+		
 		assertEquals(13, margPizza.getOrderProfit(), percision);
 		assertEquals(9, vegaPizza.getOrderProfit(), percision);
 		assertEquals(14, meatPizza.getOrderProfit(), percision);
@@ -306,14 +247,9 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaGetOrderProfitMax() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(10, time1, time2);
-			meatPizza = new MeatLoversPizza(10, time2, time3);
-			vegaPizza = new VegetarianPizza(10, time3, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(10, time1, time2);
+		meatPizza = new MeatLoversPizza(10, time2, time3);
+		vegaPizza = new VegetarianPizza(10, time3, time4);
 		assertEquals(65, margPizza.getOrderProfit(), percision);
 		assertEquals(45, vegaPizza.getOrderProfit(), percision);
 		assertEquals(70, meatPizza.getOrderProfit(), percision);
@@ -400,14 +336,9 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaGetQuantityTwo() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(2, time1, time2);
-			meatPizza = new MeatLoversPizza(2, time2, time3);
-			vegaPizza = new VegetarianPizza(2, time3, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(2, time1, time2);
+		meatPizza = new MeatLoversPizza(2, time2, time3);
+		vegaPizza = new VegetarianPizza(2, time3, time4);
 		assertEquals(2, margPizza.getQuantity());
 		assertEquals(2, vegaPizza.getQuantity());
 		assertEquals(2, meatPizza.getQuantity());
@@ -415,14 +346,10 @@ public class PizzaTests {
 	
 	@Test
 	public void pizzaGetQuantityMax() throws PizzaException {
-		try {
-			margPizza = new MargheritaPizza(10, time1, time2);
-			meatPizza = new MeatLoversPizza(10, time2, time3);
-			vegaPizza = new VegetarianPizza(10, time3, time4);
-		} catch (PizzaException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
+		margPizza = new MargheritaPizza(10, time1, time2);
+		meatPizza = new MeatLoversPizza(10, time2, time3);
+		vegaPizza = new VegetarianPizza(10, time3, time4);
+
 		assertEquals(10, margPizza.getQuantity());
 		assertEquals(10, vegaPizza.getQuantity());
 		assertEquals(10, meatPizza.getQuantity());
