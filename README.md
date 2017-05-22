@@ -54,8 +54,8 @@ In package: asgn2Tests
 
 
 ## Shared Model Classes
-- asgn2GUIs.PizzaGUIs
+- asgn2GUIs.PizzaGUIs ✔
 - asgn2Restaurant.PizzaRestaurant.processLog ✔
 - asgn2Restaurant.PizzaRestaurant.resetDetails ✔
-- asgnWizard.PizzaWizard
+- asgnWizard.PizzaWizard ✔
 
