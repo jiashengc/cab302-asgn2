@@ -5,18 +5,18 @@ person A = "Jay", person B = "Jia";
 ### Jay
 ---
 In package: asgn2Pizzas:
-- Pizza
-- MargheritaPizza
-- MeatLoversPizza
-- Vegetarian Pizza
-- PizzaFactory
+- Pizza ✔
+- MargheritaPizza ✔
+- MeatLoversPizza ✔
+- Vegetarian Pizza ✔
+- PizzaFactory ✔
 
 In package: asgn2Restaurant:
-- LogHandler.populatePizzaDataset()
-- LogHandler.createPizza()
-- PizzaRestaurant.getPizzaByIndex()
-- PizzaRestaurant.getNumPizzaOrders()
-- PizzaRestaurant.getTotalProfit()
+- LogHandler.populatePizzaDataset() ✔
+- LogHandler.createPizza() ✔
+- PizzaRestaurant.getPizzaByIndex() ✔
+- PizzaRestaurant.getNumPizzaOrders() ✔
+- PizzaRestaurant.getTotalProfit() ✔
 
 ### Jia
 ---
@@ -39,17 +39,17 @@ In package: asgn2Restaurant
 ### Jay
 ---
 In package: asgn2Tests:
-- CustomerFactoryTests
-- CustomerTests
+- CustomerFactoryTests ✔
+- CustomerTests ✔
 - LogHandlerCustomerTests
 - RestaurantCustomerTests
 
 ### Jia
 ---
 In package: asgn2Tests
-- LogHandlerPizzaTests 
 - PizzaFactoryTests ✔
 - PizzaTests ✔
+- LogHandlerPizzaTests 
 - RestaurantPizzaTests
 
 
