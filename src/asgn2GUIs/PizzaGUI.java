@@ -366,7 +366,8 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	}
 	
 	/**
-	 * Generates customer and order tables from the restaurant object
+	 * Generates customer and order tables from the restaurant object.
+	 * Then updates the table onto the respective customer and order card panels.
 	 * 
 	 * @throws CustomerException
 	 * @throws PizzaException

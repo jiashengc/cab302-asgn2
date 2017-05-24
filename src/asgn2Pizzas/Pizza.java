@@ -68,7 +68,9 @@ public abstract class Pizza  {
 		// Must be between 17 : 00 and 23 : 00
 		LocalTime checkTime1 = orderTime;
 		int hours1 = checkTime1.getHour();
-		if( (hours1 < 19 || hours1 > 23)) throw new PizzaException("Invalid order time.");
+		if(hours1 < 19 || hours1 > 23)  {
+			throw new PizzaException("Invalid order time.");
+		}
 		
 		/*
 		// Check if deliveryTime meets the requirement

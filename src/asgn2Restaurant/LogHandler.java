@@ -120,7 +120,7 @@ public class LogHandler {
 			code = currentCustomer[4];
 			locationX = Integer.parseInt(currentCustomer[5]);
 			locationY = Integer.parseInt(currentCustomer[6]);
-		} catch(Exception e) {
+		} catch(ArrayIndexOutOfBoundsException e) {
 			e.printStackTrace();
 			throw new LogHandlerException("Setting customer variables failed.");
 		}
@@ -162,8 +162,8 @@ public class LogHandler {
 			pizzaCode = currentInformation[7];
 			quantity = Integer.parseInt(currentInformation[8]);
 			
-		} catch(Exception e) {
-				e.printStackTrace();
+		} catch(ArrayIndexOutOfBoundsException e) {
+				//e.printStackTrace();
 				throw new LogHandlerException("Setting pizza fields failed.");
 		}
 				
