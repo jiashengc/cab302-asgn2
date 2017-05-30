@@ -144,3 +144,167 @@ Author: Jia Sheng Chong <jiashengc@hotmail.com>
 Date:   Wed Apr 26 13:45:33 2017 +1000
 
     Initial commit
+commit 1eb1a1015eb7ed128e79de43b9dbb2e15dd7c015
+Author: Jia Sheng Chong <jiashengc@outlook.com>
+Date:   Tue May 30 15:21:24 2017 +1000
+
+    Generate repo.log
+
+commit a4f8a303da0d0bb46e3f38e7bcc9123d033c970c
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Tue May 30 15:16:36 2017 +1000
+
+    Set Author B to my Name; Uploaded report
+
+commit c6c83435309dea96399ad54765028d3607ef42aa
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Tue May 30 14:32:21 2017 +1000
+
+    Added error notifications to GUI
+
+commit 787f8fcd083a1bf5fa622e554661e71e1994654d
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Wed May 24 14:29:51 2017 +1000
+
+    Completed all test files
+
+commit fa4929d24dd197002dd03cb45951e440007bd145
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Mon May 22 15:01:11 2017 +1000
+
+    Update PizzaTests.java
+
+commit f9e06d25ddab5015db1b27c233e473bd2cc7e765
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Mon May 22 13:43:07 2017 +1000
+
+    Update README.md
+
+commit fd0c3f22f98fd1e2921df68ee88c81cc2b4f1852
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Mon May 22 13:42:12 2017 +1000
+
+    Update README.md
+
+commit 7664cf3bc41e23d2eb8d9af033b3398dd18bd4c6
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Mon May 22 01:26:11 2017 +1000
+
+    Add files via upload
+
+commit b06c58de19053714f33328dc2a18d4a6736ea0ab
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Sun May 21 14:23:01 2017 +1000
+
+    Add files via upload
+
+commit aa50a9a391942ec2161fe4be2a5bf73844f73b06
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Fri May 19 12:52:42 2017 +1000
+
+    Add files via upload
+
+commit 6751d216c105517d95cc7aa73a96183ec5eb72a1
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Wed May 17 13:25:45 2017 +1000
+
+    Add files via upload
+
+commit 0b10ef8a2fb992591a798ab4138ced1b309e8503
+Author: theterrificman <cjs7250@gmail.com>
+Date:   Wed May 17 12:53:13 2017 +1000
+
+    Add files via upload
+
+commit bd625057763d8ef0e5ffa0d63dbe259a1237c694
+Author: theterrificman <cjs7250@gmail.com>
+Date:   Tue May 16 15:36:54 2017 +1000
+
+    Add files via upload
+
+commit b049edc63a194d5ccc4fb0b9e32d121785599d61
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Sat May 6 21:54:19 2017 +1000
+
+    Update README.md
+
+commit 95b198a9d142ec588ea638e780009aef7a5aa980
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Sat May 6 21:52:47 2017 +1000
+
+    Update README.md
+
+commit 6aa53286f45e512c5444a09effcaa285983b7e51
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Sat May 6 21:50:39 2017 +1000
+
+    Update README.md
+
+commit aaa1e04ed82e3099f5f0c2e0f739d48d05a72f8f
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Sat May 6 21:36:44 2017 +1000
+
+    Completed more pizza tests and finished customer LogHandler
+
+commit 40375de3c159b54c4bae1ffe4d1546e2bc49c0e0
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Sat May 6 19:39:52 2017 +1000
+
+    Completed pizza test cases
+
+commit a265622d61f65e93f36ded39ef1ad63eb67d365b
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Sat May 6 14:54:23 2017 +1000
+
+    Completed Customer classes and pizzaRestaurant class
+    
+    Completed customer and its subclasses:
+    - Customer
+    - PickUpCustomer
+    - DriverDeliveryCustomer
+    - DroneDeliveryCustomer
+    - CustomerFactory
+    
+    and completed individual sections in PizzaRestaurant class
+
+commit d2f8e4a3a6405d6ad68018688ac84ef152370ff6
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Wed Apr 26 14:04:30 2017 +1000
+
+    Add files via upload
+
+commit dabc7809be90a636f88db994ce584293b890a470
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Wed Apr 26 14:00:44 2017 +1000
+
+    Add files via upload
+
+commit bdf0ed22aa68d412b2e98164a8122f39b3ce9b64
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Wed Apr 26 13:58:21 2017 +1000
+
+    Add files via upload
+
+commit 31da3387488408f591e0e6834e657efced7b717f
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Wed Apr 26 13:58:07 2017 +1000
+
+    Add files via upload
+
+commit b4753a16827966f3122cb234d45660936f6007de
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Wed Apr 26 13:56:54 2017 +1000
+
+    Add files via upload
+
+commit 2ee8595a87954064168934f03c4a517e035e9711
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Wed Apr 26 13:52:20 2017 +1000
+
+    Add files via upload
+
+commit 1b4e2be4f3ec0477e271b5eb147b9a7ea0f7006c
+Author: Jia Sheng Chong <jiashengc@hotmail.com>
+Date:   Wed Apr 26 13:45:33 2017 +1000
+
+    Initial commit
