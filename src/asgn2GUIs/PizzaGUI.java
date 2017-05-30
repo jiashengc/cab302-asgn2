@@ -39,7 +39,7 @@ import javax.swing.*;
  * You can also use this class and asgn2Wizards.PizzaWizard to test your system as a whole
  * 
  * 
- * @author Person A and Person B
+ * @author Person A and Jia Sheng Chong
  *
  */
 public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionListener {
@@ -223,19 +223,19 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 				JOptionPane.showMessageDialog(pnlMainMenuCard,
 					    "Something is wrong with the pizzas in this file.\n"
 					    + "Please choose another file!",
-					    "Inane error",
+					    "Pizza Error",
 					    JOptionPane.ERROR_MESSAGE);
 			} catch (CustomerException e1) {
 				JOptionPane.showMessageDialog(pnlMainMenuCard,
 					    "Something is wrong with the customers in this file.\n"
 					    + "Please choose another file!",
-					    "Inane error",
+					    "Customer Error",
 					    JOptionPane.ERROR_MESSAGE);
 			} catch (LogHandlerException e1) {
 				JOptionPane.showMessageDialog(pnlMainMenuCard,
 					    "Something is wrong with the file!\n"
 					    + "Please choose another file!",
-					    "Inane error",
+					    "File Error",
 					    JOptionPane.ERROR_MESSAGE);
 			}
 		}
@@ -337,7 +337,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		File[] listOfFiles = folder.listFiles();
 		txtDisplay.setText("Here\'s a list of available files!"
 				+ "\nChoose one of your liking."
-				+ "\nInvalid ones won\'t result in anything");
+				+ "\nInvalid ones will result in error.");
 		
 		// Initialize display constraints
 		GridBagLayout layout = new GridBagLayout();
