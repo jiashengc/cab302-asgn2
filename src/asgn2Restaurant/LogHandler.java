@@ -85,7 +85,6 @@ public class LogHandler {
 			}
 			
 		} catch (IOException e) {
-			e.printStackTrace();
 			throw new LogHandlerException("File cannot be read.");
 		}
 		
@@ -163,7 +162,6 @@ public class LogHandler {
 			quantity = Integer.parseInt(currentInformation[8]);
 			
 		} catch(ArrayIndexOutOfBoundsException e) {
-				//e.printStackTrace();
 				throw new LogHandlerException("Setting pizza fields failed.");
 		}
 				

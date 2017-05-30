@@ -220,14 +220,23 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 				fileOpen = true;
 				generateTable();
 			} catch (PizzaException e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
+				JOptionPane.showMessageDialog(pnlMainMenuCard,
+					    "Something is wrong with the pizzas in this file.\n"
+					    + "Please choose another file!",
+					    "Inane error",
+					    JOptionPane.ERROR_MESSAGE);
 			} catch (CustomerException e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
+				JOptionPane.showMessageDialog(pnlMainMenuCard,
+					    "Something is wrong with the customers in this file.\n"
+					    + "Please choose another file!",
+					    "Inane error",
+					    JOptionPane.ERROR_MESSAGE);
 			} catch (LogHandlerException e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
+				JOptionPane.showMessageDialog(pnlMainMenuCard,
+					    "Something is wrong with the file!\n"
+					    + "Please choose another file!",
+					    "Inane error",
+					    JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
