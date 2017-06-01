@@ -12,7 +12,7 @@ import asgn2Exceptions.PizzaException;
  *  The margherita pizza has certain toppings listed in Section 5.1 of the Assignment Specification Document.  
  *  A description of the class's fields and their constraints is provided in Section 5.1 of the Assignment Specification.
  * 
- * @author Person A
+ * @author Ji Su Choi (n9678166)
  *
  */
 public class MargheritaPizza extends Pizza {

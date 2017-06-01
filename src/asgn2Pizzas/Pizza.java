@@ -3,6 +3,7 @@ package asgn2Pizzas;
 import java.time.LocalTime;
 
 import asgn2Exceptions.PizzaException;
+import static java.time.temporal.ChronoUnit.MINUTES;
 
 
 /**
@@ -11,7 +12,7 @@ import asgn2Exceptions.PizzaException;
  * Each of these subclasses have a different set of toppings. A description of the class's fields
  * and their constraints is provided in Section 5.1 of the Assignment Specification. 
  * 
- * @author Person A
+ * @author Ji Su Choi (n9678166)
  *
  */
 public abstract class Pizza  {
@@ -68,19 +69,25 @@ public abstract class Pizza  {
 		// Must be between 17 : 00 and 23 : 00
 		LocalTime checkTime1 = orderTime;
 		int hours1 = checkTime1.getHour();
-		if(hours1 < 19 || hours1 > 23)  {
+		int minute1 = checkTime1.getMinute();
+		if(hours1 < 19 || hours1 > 23 || (hours1 >= 23 && minute1 > 0))  {
 			throw new PizzaException("Invalid order time.");
 		}
 		
-		/*
+		
 		// Check if deliveryTime meets the requirement
 		LocalTime checkTime2 = deliveryTime;
 		int hours2 = checkTime2.getHour();
-		int minute2 = checkTime2.getMinute();
-		int second2 = checkTime2.getSecond();
-		if( (hours2 < 0 || hours2 > 23) || (minute2 < 0 || minute2 > 59) || (second2 < 0 || second2 > 59) ) throw new PizzaException("");
-		*/
-	
+		if( hours2 < 19 ) throw new PizzaException("");
+		
+		// Check if orderTime and deliveryTime are valid or not.
+		LocalTime time1 = LocalTime.parse(orderTime.toString());
+		LocalTime time2 = LocalTime.parse(deliveryTime.toString());
+		
+		long diff = MINUTES.between(time1, time2);
+		if(diff < 5 || diff >= 60)  {
+			throw new PizzaException("Invalid time.");
+		}
 		
 		// Check if type meets the requirement
 		// Must be "Margherita", "Vegetarian", or Meat Lovers"
@@ -148,7 +155,7 @@ public abstract class Pizza  {
 	 */
 	public final double getOrderCost(){
 		// TO DO
-		orderCost = costPerPizza * quantity;
+		orderCost = getCostPerPizza() * quantity;
 		return orderCost;
 	}
 	
@@ -170,7 +177,7 @@ public abstract class Pizza  {
 	 */
 	public final double getOrderProfit(){
 		// TO DO
-		orderProfit = orderPrice - orderCost;
+		orderProfit = getOrderPrice() - getOrderCost();
 		return orderProfit;
 	}
 	
