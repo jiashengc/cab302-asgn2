@@ -11,7 +11,7 @@ import asgn2Restaurant.LogHandler;
 
 /** A class that tests the methods relating to the creation of Pizza objects in the asgn2Restaurant.LogHander class.
 * 
-* @author Jia Sheng Chong
+* @author Jia Sheng Chong (n9901990)
 * 
 */
 public class LogHandlerPizzaTests {
@@ -90,22 +90,22 @@ public class LogHandlerPizzaTests {
 		pizzas = LogHandler.populatePizzaDataset(corruptFile4);
 	}
 	
-	@Test(expected=PizzaException.class)
+	@Test(expected=LogHandlerException.class)
 	public void testPopulatePizzaDatasetWithInvalid1() throws PizzaException, LogHandlerException {
 		pizzas = LogHandler.populatePizzaDataset(invalidFile1);
 	}
 	
-	@Test(expected=PizzaException.class)
+	@Test(expected=LogHandlerException.class)
 	public void testPopulatePizzaDatasetWithInvalid2() throws PizzaException, LogHandlerException {
 		pizzas = LogHandler.populatePizzaDataset(invalidFile2);
 	}
 	
-	@Test(expected=PizzaException.class)
+	@Test(expected=LogHandlerException.class)
 	public void testPopulatePizzaDatasetWithInvalid3() throws PizzaException, LogHandlerException {
 		pizzas = LogHandler.populatePizzaDataset(invalidFile3);
 	}
 	
-	@Test(expected=PizzaException.class)
+	@Test(expected=LogHandlerException.class)
 	public void testPopulatePizzaDatasetWithInvalid4() throws PizzaException, LogHandlerException {
 		pizzas = LogHandler.populatePizzaDataset(invalidFile4);
 	}
