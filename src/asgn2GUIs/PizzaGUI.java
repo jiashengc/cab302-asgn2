@@ -32,10 +32,10 @@ import javax.swing.*;
 
 /**
  * This class is the graphical user interface for the rest of the system. 
- * Currently it is a ë©¶ummyï¿½ class which extends JFrame and implements Runnable and ActionLister. 
+ * Currently it is a ‘dummy’ class which extends JFrame and implements Runnable and ActionLister. 
  * It should contain an instance of an asgn2Restaurant.PizzaRestaurant object which you can use to 
  * interact with the rest of the system. You may choose to implement this class as you like, including changing 
- * its class signature ï¿½ as long as it  maintains its core responsibility of acting as a GUI for the rest of the system. 
+ * its class signature – as long as it  maintains its core responsibility of acting as a GUI for the rest of the system. 
  * You can also use this class and asgn2Wizards.PizzaWizard to test your system as a whole
  * 
  * 
@@ -221,23 +221,33 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		}
 		
 		// Check if it's a file then load that file
-		if (command.substring(command.length() - 4).equals(".txt") && !fileOpen) {
-			try {
-				restaurant = new PizzaRestaurant();
-				restaurant.processLog("logs/" + command);
-				fileOpen = true;
-				generateTable();
-			} catch (PizzaException e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
-			} catch (CustomerException e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
-			} catch (LogHandlerException e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
-			}
-		}
+		// Check if it's a file then load that file
+				if (command.substring(command.length() - 4).equals(".txt") && !fileOpen) {
+					try {
+						restaurant = new PizzaRestaurant();
+						restaurant.processLog("logs/" + command);
+						fileOpen = true;
+						generateTable();
+					} catch (PizzaException e1) {
+						JOptionPane.showMessageDialog(pnlMainMenuCard,
+							    "Something is wrong with the pizzas in this file.\n"
+							    + "Please choose another file!",
+							    "Pizza Error",
+							    JOptionPane.ERROR_MESSAGE);
+					} catch (CustomerException e1) {
+						JOptionPane.showMessageDialog(pnlMainMenuCard,
+							    "Something is wrong with the customers in this file.\n"
+							    + "Please choose another file!",
+							    "Customer Error",
+							    JOptionPane.ERROR_MESSAGE);
+					} catch (LogHandlerException e1) {
+						JOptionPane.showMessageDialog(pnlMainMenuCard,
+							    "Something is wrong with the file!\n"
+							    + "Please choose another file!",
+							    "File Error",
+							    JOptionPane.ERROR_MESSAGE);
+					}
+				}
 		
 	}
 

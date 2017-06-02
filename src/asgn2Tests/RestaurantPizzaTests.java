@@ -18,7 +18,7 @@ import asgn2Restaurant.PizzaRestaurant;
  * A class that tests the methods relating to the handling of Pizza objects in the asgn2Restaurant.PizzaRestaurant class as well as
  * processLog and resetDetails.
  * 
- * @author Jia Sheng Chong
+ * @author Jia Sheng Chong (n9901990)
  *
  */
 public class RestaurantPizzaTests {
