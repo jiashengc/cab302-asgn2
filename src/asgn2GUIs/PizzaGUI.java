@@ -32,14 +32,14 @@ import javax.swing.*;
 
 /**
  * This class is the graphical user interface for the rest of the system. 
- * Currently it is a ë©¶ummyï¿½ class which extends JFrame and implements Runnable and ActionLister. 
+ * Currently it is a ‘dummy’ class which extends JFrame and implements Runnable and ActionLister. 
  * It should contain an instance of an asgn2Restaurant.PizzaRestaurant object which you can use to 
  * interact with the rest of the system. You may choose to implement this class as you like, including changing 
- * its class signature ï¿½ as long as it  maintains its core responsibility of acting as a GUI for the rest of the system. 
+ * its class signature – as long as it  maintains its core responsibility of acting as a GUI for the rest of the system. 
  * You can also use this class and asgn2Wizards.PizzaWizard to test your system as a whole
  * 
  * 
- * @author Ji Su Choi (n9678166)  and Jia Sheng Chong (n9901990)
+ * @author Person A and Jia Sheng Chong
  *
  */
 public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionListener {
@@ -76,8 +76,6 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	// Displays
 	private JTextArea txtDisplay;
 	private JTextArea txtTotalDistance;
-	private JTextArea txtTotalProfit;
-	
 	
 	// Tables
 	private JTable customersTable;
@@ -137,10 +135,9 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		btnTotalProfitMade = createButton("Total Profit Made");
 		btnTotalDistanceTravelled = createButton("Total Distance Travelled");
 		
-		// Setting text displays for total distance and text displays for total profit
+		// Setting text displays
 		txtDisplay = createTextArea(5, 20, true);
 		txtTotalDistance = createTextArea(2, 10, false);
-		txtTotalProfit = createTextArea(2, 10, false);
 		
 		// Main Menu
 		pnlMainMenuCard.add(txtDisplay);
@@ -213,11 +210,6 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 			txtTotalDistance.setText("Total Distance: \n" + Double.toString(total_distance));
 			pnlCustomerCard.add(txtTotalDistance);
 			pnlCustomerCard.updateUI();
-		} else if(src == btnTotalProfitMade && fileOpen ){
-			double total_profit = restaurant.getTotalProfit();
-			txtTotalProfit.setText("Total profit: \n" + Double.toString(total_profit));
-			pnlOrderCard.add(txtTotalProfit);
-			pnlOrderCard.updateUI();
 		}
 		
 		// Check if it's a file then load that file
@@ -228,14 +220,23 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 				fileOpen = true;
 				generateTable();
 			} catch (PizzaException e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
+				JOptionPane.showMessageDialog(pnlMainMenuCard,
+					    "Something is wrong with the pizzas in this file.\n"
+					    + "Please choose another file!",
+					    "Pizza Error",
+					    JOptionPane.ERROR_MESSAGE);
 			} catch (CustomerException e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
+				JOptionPane.showMessageDialog(pnlMainMenuCard,
+					    "Something is wrong with the customers in this file.\n"
+					    + "Please choose another file!",
+					    "Customer Error",
+					    JOptionPane.ERROR_MESSAGE);
 			} catch (LogHandlerException e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
+				JOptionPane.showMessageDialog(pnlMainMenuCard,
+					    "Something is wrong with the file!\n"
+					    + "Please choose another file!",
+					    "File Error",
+					    JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
@@ -336,7 +337,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 		File[] listOfFiles = folder.listFiles();
 		txtDisplay.setText("Here\'s a list of available files!"
 				+ "\nChoose one of your liking."
-				+ "\nInvalid ones won\'t result in anything");
+				+ "\nInvalid ones will result in error.");
 		
 		// Initialize display constraints
 		GridBagLayout layout = new GridBagLayout();

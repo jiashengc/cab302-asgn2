@@ -15,7 +15,7 @@ import asgn2Pizzas.PizzaFactory;
 /** 
  * A class that tests the asgn2Pizzas.PizzaFactory class.
  * 
- * @author Jia Sheng Chong (n9901990)
+ * @author Jia Sheng Chong
  * 
  */
 public class PizzaFactoryTests {

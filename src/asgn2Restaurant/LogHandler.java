@@ -22,7 +22,7 @@ import asgn2Pizzas.PizzaFactory;
  * and Customer object - either as an individual Pizza/Customer object or as an
  * ArrayList of Pizza/Customer objects.
  * 
- * @author Ji Su Choi (n9678166) and Jia Sheng Chong (n9901990)
+ * @author Person A and Jia Sheng Chong
  *
  */
 public class LogHandler {
@@ -85,7 +85,6 @@ public class LogHandler {
 			}
 			
 		} catch (IOException e) {
-			e.printStackTrace();
 			throw new LogHandlerException("File cannot be read.");
 		}
 		
@@ -163,7 +162,6 @@ public class LogHandler {
 			quantity = Integer.parseInt(currentInformation[8]);
 			
 		} catch(ArrayIndexOutOfBoundsException e) {
-				//e.printStackTrace();
 				throw new LogHandlerException("Setting pizza fields failed.");
 		}
 				

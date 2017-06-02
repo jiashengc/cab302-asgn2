@@ -13,7 +13,7 @@ import asgn2Exceptions.CustomerException;
 /**
  * A class the that tests the asgn2Customers.CustomerFactory class.
  * 
- * @author Ji Su Choi (n9678166)
+ * @author Person A
  *
  */
 public class CustomerFactoryTests {

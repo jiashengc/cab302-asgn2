@@ -8,7 +8,7 @@ import asgn2Exceptions.CustomerException;
  *  the abstract method getDeliveryDistance. A description of the class's
  * fields and their constraints is provided in Section 5.2 of the Assignment Specification.  
  * 
- * @author Jia Sheng Chong (n9901990)
+ * @author Jia Sheng Chong
 */
 public abstract class Customer {
 
