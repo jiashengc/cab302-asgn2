@@ -49,10 +49,7 @@ public class PizzaRestaurant {
      * 
 	 * @param filename The log's filename
 	 * @return true if the file was processed correctly 
-	 * @throws CustomerException If the log file contains semantic errors leading that violate the customer constraints. These constraints include:
-	 * @throws CustomerException If a name from the log file is not between 1 - 20 characters and is not just whitespaces
-	 * @throws CustomerException If a mobile number from the log file does not start with 0 and is not exactly 10 digits
-	 * @throws CustomerException If a locationX or locationY from the log file is 10 blocks away from the restaurant
+	 * @throws CustomerException If the log file contains semantic errors leading that violate the customer constraints listed in Section 5.3 of the Assignment Specification or contain an invalid customer code (passed by another class).
 	 * @throws PizzaException If the log file contains semantic errors leading that violate the pizza constraints listed in Section 5.3 of the Assignment Specification or contain an invalid pizza code (passed by another class).
 	 * @throws LogHandlerException If there was a problem with the log file not related to the semantic errors above (passed by another class).
      *

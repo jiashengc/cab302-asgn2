@@ -33,10 +33,7 @@ public class LogHandler {
 	 * Returns an ArrayList of Customer objects from the information contained in the log file ordered as they appear in the log file.
 	 * @param filename The file name of the log file
 	 * @return an ArrayList of Customer objects from the information contained in the log file ordered as they appear in the log file. 
-	 * @throws CustomerException If the log file contains semantic errors leading that violate the customer constraints. These include:
-	 * @throws CustomerException If a name from the log file is not between 1 - 20 characters and is not just whitespaces
-	 * @throws CustomerException If a mobile number from the log file does not start with 0 and is not exactly 10 digits
-	 * @throws CustomerException If a locationX or locationY from the log file is 10 blocks away from the restaurant
+	 * @throws CustomerException If the log file contains semantic errors leading that violate the customer constraints listed in Section 5.3 of the Assignment Specification or contain an invalid customer code (passed by another class).
 	 * @throws LogHandlerException If there was a problem with the log file not related to the semantic errors above
 	 * 
 	 */
