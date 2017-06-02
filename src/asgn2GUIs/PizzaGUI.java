@@ -187,7 +187,7 @@ public class PizzaGUI extends javax.swing.JFrame implements Runnable, ActionList
 	 * Checks for user actions within the GUI 
 	 * and do specific stuff based on the user action
 	 * 
-	 * @param User action
+	 * @param e An action event by the user
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
