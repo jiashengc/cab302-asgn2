@@ -18,7 +18,7 @@ import asgn2Restaurant.PizzaRestaurant;
  * A class that tests the methods relating to the handling of Pizza objects in the asgn2Restaurant.PizzaRestaurant class as well as
  * processLog and resetDetails.
  * 
- * @author Jia Sheng Chong (n9901990)
+ * @author Jia Sheng Chong
  *
  */
 public class RestaurantPizzaTests {
@@ -60,7 +60,7 @@ public class RestaurantPizzaTests {
 	}
 	
 	// Test if adding invalid or corrupted files is okay
-	@Test(expected=LogHandlerException.class)
+	@Test(expected=PizzaException.class)
 	public void testProcessInvalidFiles() throws CustomerException, PizzaException, LogHandlerException {
 		for (int i = 1; i <= 3; i+=1) {
 			String no = Integer.toString(i);
