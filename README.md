@@ -1,5 +1,5 @@
 # CAB302 Assignment 2 - Breakdown of Work
-person A = "Jay", person B = "Jia";
+person A = "JiSu", person B = "Jia";
 
 ## Individual Model Classes  
 ### JiSu
