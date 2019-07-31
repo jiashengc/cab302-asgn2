@@ -2,7 +2,7 @@
 person A = "Jay", person B = "Jia";
 
 ## Individual Model Classes  
-### Jay
+### JiSu
 ---
 In package: asgn2Pizzas:
 - Pizza ✔
@@ -36,13 +36,13 @@ In package: asgn2Restaurant
 
 
 ## Individual Test Classes
-### Jay
+### JiSu
 ---
 In package: asgn2Tests:
-- CustomerFactoryTests
-- CustomerTests
-- LogHandlerCustomerTests
-- RestaurantCustomerTests
+- CustomerFactoryTests ✔
+- CustomerTests ✔
+- LogHandlerCustomerTests ✔
+- RestaurantCustomerTests ✔
 
 ### Jia
 ---
@@ -54,8 +54,8 @@ In package: asgn2Tests
 
 
 ## Shared Model Classes
-- asgn2GUIs.PizzaGUIs
+- asgn2GUIs.PizzaGUIs ✔
 - asgn2Restaurant.PizzaRestaurant.processLog ✔
 - asgn2Restaurant.PizzaRestaurant.resetDetails ✔
-- asgnWizard.PizzaWizard
+- asgnWizard.PizzaWizard ✔
 
